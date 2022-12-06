@@ -20,5 +20,34 @@ a:hover, a:active {
    color: lightskyblue;
 }
 
+.center {
+   text-align: center
+  }
+  .title{
+     font-family: Arial;
+     font-size: 40px;
+     font-weight: bold;
+     text-align: center;
+     line-height: 26px;
+     margin-top: 10px;
+     margin-bottom: 1px;
+  }
+  .subtitle{
+   font-family: Arial;
+   font-size: 40px;
+   font-weight: bold;
+   line-height: 26px;
+   margin-top: 10px;
+   margin-bottom: 1px;
+}
+  .lastmodifiedtext{
+     font-family: Arial;
+     font-size: 20px;
+     line-height: 26px;
+     margin-top: 10px;
+     margin-bottom: 5px;
+     text-align: center;
+  }
+
 
 
