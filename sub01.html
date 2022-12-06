@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+   <head>
+      <meta charset="UTF-8">
+      <meta name="author" content="Noda shuto">
+      <meta name="description" content="latex setup">    
+      <title>LaTeX set up</title>
+      <link rel="stylesheet" href="main.css" type="text/css">
+   </head>
+   
+   <body>
+      
+      <h1 class="center">LaTeX set up </h1>
+      <hr>
+      <ul>
+         <li>Install TeX Live [<a href=" https://tug.org/texlive/"> TeX Live  </a>].</li>
+         <li>Install latexmk via TeX Live Manager.
+         <li>Download Visual Studio Code [<a href="https://code.visualstudio.com/download">here </a>].</li>
+         <li>Add VScode Extension callded "LaTeX Workshop".</li>
+      </ul>
+      
+   </body>
+   <body onload="myFunction()">
+      <p>
+         <a href="./index.html"> Back to Home</a>
+      </p>
+      <hr>
+      <p class="center">  
+         &lt;&lt;&lt; &copy; <a href="about.html">N.Shūto</a> &gt;&gt;&gt; 
+         
+      </p>
+      <p class="lastmodifiedtext">
+         last-modified: <span id="demo"></span>
+      </p>
+      <script>
+        function myFunction() {
+          var x = document.lastModified;
+          document.getElementById("demo").innerHTML = x;
+        }
+      </script>
+    </body>
+</html>
