@@ -1,19 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
    <head>
       <meta charset="UTF-8">
-      <meta name="author" content="Noda shuto">
-      <meta name="description" content="This bage is about me.">    
+      <meta name="author-name" content="Noda shuto">
+      <meta name="description" content="This page is about me.">    
       <title>About</title>
       <link rel="stylesheet" href="main.css" type="text/css">
-      </head>
+   
+   </head>
    <body>
       <article>
-         <h2>about</h2>
-         <p>
-            Updated <time class="dateline">2022-12-04</time>
-          </p>
+         <h2 class="subtitle">about</h2>
          <p>
             <!-- <img src="images\me.png" alt="me" title="me" width="150" height="174" style = " display:block;margin:auto; "> -->
             <img src="images/me.png" alt="me" title="me" width="150" height="174">
@@ -29,5 +26,17 @@
       <p>
          <a href="index.html"> Back to Home</a>
       </p>
+      
    </body>
+   <body onload="myFunction()">
+      <p class="lastmodifiedtext">
+         last-modified: <span id="demo"></span>
+      </p>
+      <script>
+        function myFunction() {
+          var x = document.lastModified;
+          document.getElementById("demo").innerHTML = x;
+        }
+      </script>
+    </body>
 </html>
