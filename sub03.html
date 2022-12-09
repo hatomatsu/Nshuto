@@ -4,9 +4,12 @@
       <meta charset="UTF-8">
       <meta name="author" content="Noda shuto">
       <meta name="description" content="Cross product">
-      
       <title>cross product</title>
-      <link rel="stylesheet" href="main.css" type="text/css">
+      <style>
+         .center {
+            text-align: center
+         }
+      </style>
       <link rel="stylesheet" href="https://latex.now.sh/style.min.css" />
       <link rel="stylesheet" href="https://latex.now.sh/lang/ja.css" />
       <link rel="stylesheet" href="https://latex.now.sh/prism/prism.css">
@@ -27,6 +30,13 @@
          <script type="text/javascript" id="MathJax-script" async
            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
          </script>
+
+      <script src="jquery.js"></script> 
+      <script> 
+      $(function(){
+      $("#includedContent").load("b.html"); 
+      });
+      </script> 
    </head>
    <body>
       <h1>Cross product </h1>
@@ -73,17 +83,18 @@
       \end{matrix}
       <p>You have to remenber the index of times symbol which indicate the order of multiplication i.e. the row number.
       </p>
-   </body>
-   <body onload="myFunction()">
+
+      <div id="includedContent"></div>
+      
       <p>
-         <a href="./index.html"> Back to Home</a>
+         <a href="./index.html">&#8592; Back to Home</a>
       </p>
       <hr>
       <p class="center">  
-         &lt;&lt;&lt; &copy; <a href="about.html">N.Shūto</a> &gt;&gt;&gt; 
-         
-      </p>
-      <p class="lastmodifiedtext">
+         &copy; N.Shūto 
+        
+     </p>
+      <p class="center">
          last-modified: <span id="demo"></span>
       </p>
       <script>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="author" content="Noda shuto">
+      <meta name="description" content="calc">
+      <script>
+
+         function calc()
+         {
+            var n1 = parseInt(document.getElementById('n1').value);
+            var n2 = parseInt(document.getElementById('n2').value);
+            var operator = document.getElementById('operators').value;
+
+            if(operator === '+'){
+               var n2 = document.getElementById('result').value = n1+n2;
+            }
+         }
+
+      </script>
+      <title>calc</title>
+      <link rel="stylesheet" href="main.css" type="text/css">
+      <!-- <link rel="stylesheet" href="https://latex.now.sh/style.min.css" /> -->
+      <!-- <link rel="stylesheet" href="https://latex.now.sh/lang/ja.css" /> -->
+      <!-- <link rel="stylesheet" href="https://latex.now.sh/prism/prism.css"> -->
+      <!-- <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script> -->
+   </head>
+   <body>
+      <h1 class="title">hook length calculator</h1>
+
+      <hr>
+<!--      
+      <input type="text" id="n1" />
+      <br>
+      <label for="operators">select:</label>
+      <select name="operators" id="operators">
+         <option value="+">+</option>
+         <option value="-">-</option>
+         <option value="x">x</option>
+         <option value="/">/</option>
+      </select>
+      <br>
+      <input type="text" id="n2" />
+      <br>
+
+      
+      <button onclick="calc();">=</button>
+      <br>
+      <input type="text" id="result" /> -->
+      <pre id="arrPrint"></pre>
+      <script>
+        let arr = [{name: "Jack"}, {name: "John"}, {name: "James"}];
+        document.getElementById("arrPrint").innerHTML = JSON.stringify(arr, null, 2);
+      </script>
+   </body>
+   <body onload="myFunction()">
+      <p>
+         <a href="./index.html">&#8592; Back to Home</a>
+      </p>
+      <hr>
+      <p class="center">  
+         &lt;&lt;&lt; &copy; <a href="about.html">N.Shūto</a> &gt;&gt;&gt; 
+         
+      </p>
+      <p class="lastmodifiedtext">
+         last-modified: <span id="demo"></span>
+      </p>
+      <script>
+        function myFunction() {
+          var x = document.lastModified;
+          document.getElementById("demo").innerHTML = x;
+        }
+      </script>
+    </body>
+</html>
