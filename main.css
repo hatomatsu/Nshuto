@@ -1,11 +1,25 @@
+@import url('https://fonts.cdnfonts.com/css/microsoft-sans-serif');
+
+
 html {
-   font-size: 22px
+   font-size: 18px;
+   font-family:'Microsoft Sans Serif', sans-serif;
 }
+
 body {
-   background-color: whitesmoke;
+   background-color: #c0c4c8;
    color: black;
 
 }
+
+
+h1 {
+   font-family: 'Microsoft Sans Serif', sans-serif;
+}
+h2 {
+   font-family: 'Microsoft Sans Serif', sans-serif;
+}
+
 
 a {
    color: blue;
@@ -17,22 +31,30 @@ a:visited {
 }
 
 a:hover, a:active {
-   color: lightskyblue;
+   color: #5483a8;
 }
+
+mark {
+   background-color: #000080;
+   color: #f8fcf8;
+   padding: 3px;
+ }
 
 .center {
    text-align: center
   }
-  .title{
-     font-family: Arial;
+
+.title{
+     font-family: 'Microsoft Sans Serif', sans-serif;
      font-size: 40px;
      font-weight: bold;
      text-align: center;
      line-height: 26px;
      margin-top: 10px;
      margin-bottom: 1px;
-  }
-  .subtitle{
+}
+  
+.subtitle{
    font-family: Arial;
    font-size: 40px;
    font-weight: bold;
@@ -40,8 +62,9 @@ a:hover, a:active {
    margin-top: 10px;
    margin-bottom: 1px;
 }
-  .lastmodifiedtext{
-     font-family: Arial;
+  
+.lastmodifiedtext{
+     font-family: 'Microsoft Sans Serif', sans-serif;
      font-size: 20px;
      line-height: 26px;
      margin-top: 10px;
