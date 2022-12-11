@@ -2,7 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>MathBox - test01</title>
+    <title>MathBox - 3d Cube</title>
+    <meta name="description" content="3d Cube Using Mathbox "> 
     <script
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/three@0.137.0/build/three.min.js"
@@ -25,7 +26,35 @@
 
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+
+    <style>
+      .secondbody {
+          background-color: black; 
+          margin: 0 auto;
+      }
+      .remark {
+        background-color: #000080;
+        color: #effc00;
+        font-size: 20px;
+        }
+        .text {
+        background-color: black;
+        color: #ffffff;
+        font-size: 20px;
+        }
+
+    </style>
+
+    <script>
+      function myFunction() {
+        alert("Rotate and move object");
+      }
+      </script>
+
   </head>
+  <body class="secondbody">
+    <p class="remark">3D Cube</p><p class="text"> the left mouse button (or one finger) to rotate the object  <br> the right mouse button (or double finger) to move the object </p>
+  </body>
   <body>
     <script>
        // Color Cube by Max Goldstein, CC-BY
@@ -158,4 +187,5 @@
 
     </script>
   </body>
+  
 </html>
