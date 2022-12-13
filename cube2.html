@@ -80,18 +80,18 @@
         color: colors.z,
       });
 
-      // bold axis
-      mathbox
-        .select("axis")
-        .set("end", true)
-        .set("width", 5)
-        .bind("depth", function (t) {
-          return 0.5 + 0.5 * Math.sin(t * 0.5);
-        });
+      // // bold axis
+      // mathbox
+      //   .select("axis")
+      //   .set("end", true)
+      //   .set("width", 5)
+      //   .bind("depth", function (t) {
+      //     return 0.5 + 0.5 * Math.sin(t * 0.5);
+      //   });
 
 
 
-        // add unit box
+      //   // add unit box
       // var mesh = new THREE.Mesh(
       //    new THREE.BoxGeometry(0.5,0.5,0.5),
       //    new THREE.MeshNormalMaterial()
@@ -132,6 +132,7 @@
           colors: "#colors",
         });
 
+        var wd=2;
         var data = [
         [1,1,1],
         [-1, -1,-1],
@@ -146,7 +147,7 @@
         })
         .line({
           color: 0xffffff,
-          width: 1,
+          width: wd,
         });
 
         var data = [
@@ -163,7 +164,7 @@
         })
         .line({
           color: 0xffffff,
-          width: 1,
+          width: wd,
         });
 
 
@@ -181,7 +182,7 @@
         })
         .line({
           color: 0xffffff,
-          width: 1,
+          width: wd,
         });
 
         var data = [
@@ -198,7 +199,7 @@
         })
         .line({
           color: 0xffffff,
-          width: 1,
+          width: wd,
         });
 
 
@@ -433,6 +434,61 @@
           color: "yellow",
           width: 5,
         });
+
+        var data = [
+        [0.25,0.25,0.25],
+        [0.25,0.25,-0.25],
+        [0.25,-0.25,-0.25],
+        [0.25,-0.25,0.25],
+      ];
+      view.array({
+        id: "face",
+        data: data,
+        channels: 3,
+      });
+      view.transform({
+          position: [0, 0, 0],
+        })
+        .line({
+          color: "yellow",
+          width: 5,
+        })
+        .surface({
+          points: "<",
+          color: "white",
+        });
+
+        // function keyPressed(e){
+        //   switch(e.key) {
+        //     case 'ArrowUp':
+        //     mathbox.rotateX(-0.1);
+        //       break;
+        //     case 'ArrowDown':
+        //     mathbox.rotateX(0.1);
+        //       break;
+        //     case 'ArrowLeft':
+        //     mathbox.rotateY(-0.1);
+        //       break;
+        //     case 'ArrowRight':
+        //     mathbox.rotateY(0.1);
+        //       break;
+        //       case 'W':
+        //     mathbox.rotateX(-0.1);
+        //       break;
+        //     case 'S':
+        //     mathbox.rotateX(0.1);
+        //       break;
+        //     case 'A':
+        //     mathbox.rotateY(-0.1);
+        //       break;
+        //     case 'D':
+        //     mathbox.rotateY(0.1);
+        //       break;
+        //   }
+        //   e.preventDefault();
+        //   render();
+        // }
+
 
 
 
