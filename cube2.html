@@ -435,60 +435,35 @@
           width: 5,
         });
 
-        var data = [
-        [0.25,0.25,0.25],
-        [0.25,0.25,-0.25],
-        [0.25,-0.25,-0.25],
-        [0.25,-0.25,0.25],
-      ];
-      view.array({
-        id: "face",
-        data: data,
-        channels: 3,
-      });
-      view.transform({
-          position: [0, 0, 0],
+
+
+        view
+        .array({
+          data: [
+          [0.25,0.4,0.25],
+          [0.25,0.4,-0.25],
+          [-0.25,0.4,-0.25],
+          [-0.25,0.4,0.25],
+          [0.25,-0.25,0.25],
+          [0.25,-0.25,-0.25],
+          [-0.25,-0.25,-0.25],
+          [-0.25,-0.25,0.25]
+          ],
+          channels: 3, // necessary
+          live: false,
         })
-        .line({
-          color: "yellow",
-          width: 5,
+        .text({
+          data: ["1","2" , "3","4","3","4" , "1","2"],
         })
-        .surface({
-          points: "<",
-          color: "white",
+        .label({
+          color: "orange",
+          snap: false,
+          outline: 1,
+          size: 20,
+          offset: [0, -32],
+          depth: 0.5,
+          zIndex: 1,
         });
-
-        // function keyPressed(e){
-        //   switch(e.key) {
-        //     case 'ArrowUp':
-        //     mathbox.rotateX(-0.1);
-        //       break;
-        //     case 'ArrowDown':
-        //     mathbox.rotateX(0.1);
-        //       break;
-        //     case 'ArrowLeft':
-        //     mathbox.rotateY(-0.1);
-        //       break;
-        //     case 'ArrowRight':
-        //     mathbox.rotateY(0.1);
-        //       break;
-        //       case 'W':
-        //     mathbox.rotateX(-0.1);
-        //       break;
-        //     case 'S':
-        //     mathbox.rotateX(0.1);
-        //       break;
-        //     case 'A':
-        //     mathbox.rotateY(-0.1);
-        //       break;
-        //     case 'D':
-        //     mathbox.rotateY(0.1);
-        //       break;
-        //   }
-        //   e.preventDefault();
-        //   render();
-        // }
-
 
 
 
