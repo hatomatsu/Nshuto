@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="author" content="Noda shuto">
+      <meta name="description" content="Homepage">    
+      <title>N.Shuto's Sub Page</title>
+      <link rel="stylesheet" href="main.css" type="text/css">
+      <!-- <link rel="stylesheet" href="https://latex.now.sh/style.min.css" /> -->
+      <!-- <link rel="stylesheet" href="https://latex.now.sh/lang/ja.css" /> -->
+      <!-- <link rel="stylesheet" href="https://latex.now.sh/prism/prism.css"> -->
+      <!-- <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script> -->
+   </head>
+   <body>
+
+
+      <section id="list">
+         <h2>Cube</h2>
+         <ul>
+            <li>
+               <a href="cube.html">Cube with basic material</a>
+            </li>
+            <li>
+               <a href="cube_traceball.html">Cube traceball ctrl</a>
+            </li>
+            <li>
+               <a href="cube_orbit.html">Cube orbit ctrl</a>
+            </li>
+         </ul>
+      </section>
+
+   </body>
+   <body onload="myFunction()">
+      <hr>
+      <p class="center">  
+          &copy; N.Shūto 
+         
+      </p>
+      <p class="lastmodifiedtext">
+         last-modified: <span id="demo"></span>
+      </p>
+      <script>
+        function myFunction() {
+          var x = document.lastModified;
+          document.getElementById("demo").innerHTML = x;
+        }
+      </script>
+    </body>
+</html>
