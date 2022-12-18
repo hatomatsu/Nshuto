@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>MathBox - 3d cube with Trackball Controls</title>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/three@0.137.0/build/three.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/three@0.137.0/examples/js/controls/OrbitControls.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/three@0.137.0/examples/js/controls/TrackballControls.js"
+    ></script>
+    <!--
+      - a minified version mathbox.min.js is also available;
+      - recommend using a specific version (not @latest) in public sites
+    -->
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/mathbox@latest/build/bundle/mathbox.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/mathbox@latest/build/mathbox.css"
+    />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+  </head>
+  <body>
+    <!--
+    Recreation of https://twitter.com/beesandbombs/status/654702843723563009
+  -->
+
+    <script type="application/glsl" id="rotateX">
+      uniform float seek;
+
+      float ease(float t) {
+        t = clamp(t, 0.0, 1.0);
+        return (3.0 - 2.0 * t) * t * t;
+      }
+
+      vec4 rotateX(vec4 xyzw, inout vec4 stpq) {
+        float theta = ease(xyzw.x * .25 + seek) * 1.570796;
+
+        float s = sin(theta);
+        float c = cos(theta);
+        mat2  m2    = mat2(c, s, -s, c);
+
+        return vec4(xyzw.x, m2 * xyzw.yz, xyzw.w);
+      }
+    </script>
+    <script type="application/glsl" id="rotateY">
+      uniform float seek;
+
+      float ease(float t) {
+        t = clamp(t, 0.0, 1.0);
+        return (3.0 - 2.0 * t) * t * t;
+      }
+
+      vec4 rotateY(vec4 xyzw, inout vec4 stpq) {
+        float theta = ease(xyzw.y * .25 + seek) * 1.570796;
+
+        float s = sin(theta);
+        float c = cos(theta);
+        mat2  m2    = mat2(c, s, -s, c);
+
+        vec2 zx = m2 * xyzw.zx;
+        return vec4(zx.t, xyzw.y, zx.s, xyzw.w);
+      }
+    </script>
+    <script type="application/glsl" id="rotateZ">
+      uniform float seek;
+
+      float ease(float t) {
+        t = clamp(t, 0.0, 1.0);
+        return (3.0 - 2.0 * t) * t * t;
+      }
+
+      vec4 rotateZ(vec4 xyzw, inout vec4 stpq) {
+        float theta = ease(xyzw.z * .25 + seek) * 1.570796;
+
+        float s = sin(theta);
+        float c = cos(theta);
+        mat2  m2    = mat2(c, s, -s, c);
+
+        return vec4((m2 * xyzw.yx).yx, xyzw.zw);
+      }
+    </script>
+    <script>
+      // var ortho = 10000;
+      var ortho = 1000;
+
+      var mathbox = MathBox.mathBox({
+        plugins: ["core", "controls", "cursor", "mathbox"],
+        controls: {
+          // Orbit controls, i.e. Euler angles, with gimbal lock
+         //  klass: THREE.OrbitControls,
+
+          // Trackball controls, i.e. Free quaternion rotation
+          klass: THREE.TrackballControls,
+        },
+        camera: {
+          fov: (Math.atan(1 / ortho) * 360) / MathBox.π,
+          near: ortho / 4,
+          far: ortho * 4,
+        },
+      });
+      if (mathbox.fallback) throw "WebGL not supported";
+
+      view = mathbox
+        .set({
+          scale: 720,
+          focus: 1,
+        })
+        .cartesian({
+          range: [
+            [-1, 1],
+            [-1,1],
+            [-1, 1],
+          ],
+          scale: [1, 1, 1],
+        });
+
+          // axis
+          colors = {
+            x: new THREE.Color(0xff4136),
+            y: new THREE.Color(0x2ecc40),
+            z: new THREE.Color(0x0074d9),
+          };
+          view.axis({
+            color: colors.x,
+          });
+          view.axis({
+            axis: 2, // "y" also works
+            color: colors.y,
+          });
+          view.axis({
+            axis: 3,
+            color: colors.z,
+          });
+          
+      
+          // bold axis
+      mathbox
+        .select("axis")
+        .set("end", true)
+        .set("width", 5)
+        .bind("depth", function (t) {
+          return 0.5 + 0.5 * Math.sin(t * 0.5);
+        });
+        
+        view.array({
+        id: "colors",
+        live: false,
+        data: [colors.x, colors.y, colors.z].map(function (color) {
+          return [color.r, color.g, color.b, 1];
+        }),
+      });
+        view
+        .array({
+          data: [
+            [1, 0, 0],
+            [0, 1.1, 0],
+            [0, 0, 1],
+          ],
+          channels: 3, // necessary
+          live: false,
+        })
+        .text({
+          data: ["x","z","y"],
+        })
+        .label({
+          color: 0xffffff,
+          colors: "#colors",
+          size: 30,
+        });
+
+
+      // var background = new THREE.Color(187 / 255, 110 / 255, 185 / 255);
+      // var background = new THREE.Color(28 / 255, 90 / 255, 127 / 255);
+      var background = new THREE.Color(35 / 255, 56 / 255, 130 / 255);
+
+      var three = mathbox.three;
+      three.renderer.setClearColor(background, 1.0);
+
+      // Place camera
+      var camera = mathbox
+        .set({
+          focus: ortho,
+          scale: 720*2,
+        })
+        .camera({
+          proxy: true,
+          position: [ortho, ortho, ortho],
+        });
+
+      // Sample volume
+      var volume = mathbox.volume({
+        width: 2,
+        height: 2,
+        depth: 2,
+      });
+
+      var xf = mathbox;
+
+      
+
+      // Rotate Z axis
+      xf = xf
+        .shader({
+          code: "#rotateZ",
+        })
+        .play({
+          to: 3,
+          pace: 2,
+          delay: 4,
+          loop: true,
+          ease: "linear",
+          script: {
+            0: { props: { seek: -0.5 } },
+            1: { props: { seek: 1.5 } },
+            1.00001: { props: { seek: -0.5 } },
+          },
+        })
+        .vertex();
+
+      // Rotate Y axis
+      xf = xf
+        .shader({
+          code: "#rotateY",
+        })
+        .play({
+          to: 3,
+          delay: 2,
+          pace: 2,
+          loop: true,
+          ease: "linear",
+          script: {
+            0: { props: { seek: -0.5 } },
+            1: { props: { seek: 1.5 } },
+            1.00001: { props: { seek: -0.5 } },
+          },
+        })
+        .vertex();
+
+      // Rotate X axis
+      xf = xf
+        .shader({
+          code: "#rotateX",
+        })
+        .play({
+          to: 3,
+          delay: 0,
+          pace: 2,
+          loop: true,
+          ease: "linear",
+          script: {
+            0: { props: { seek: -0.5 } },
+            1: { props: { seek: 1.5 } },
+            1.00001: { props: { seek: -0.5 } },
+          },
+        })
+        .vertex();
+
+        var hd=2;
+      // // Render lines
+      // xf.group()
+      //   .resample({ shader: null, height: hd, depth: hd })
+      //   .line({ color: "#fff", width: 4 });
+      // xf.group()
+      //   .transpose({ order: "yzxw" })
+      //   .resample({ shader: null, height: hd, depth: hd })
+      //   .line({ color: "#fff", width: 4 });
+      // xf.group()
+      //   .transpose({ order: "zxyw" })
+      //   .resample({ shader: null, height: hd, depth: hd })
+      //   .line({ color: "#fff", width: 4 });
+        
+      var unit = 0.4;
+      var nPoints = 8;
+      var points = [
+         [unit,unit,unit],//0
+         [unit,unit,-unit],//1
+         [-unit,unit,-unit],//2
+         [-unit,unit,unit],//3
+         [unit,-unit,unit],//4
+         [unit,-unit,-unit],//5
+         [-unit,-unit,-unit],//6
+         [-unit,-unit,unit],//7
+      ];
+
+      // vertical_edge1 v0 v4
+      // vertical_edge2 v1 v5
+      // vertical_edge3 v2 v6
+      // vertical_edge4 v3 v7
+
+      // upper_edge5 v0 v1
+      // upper_edge6 v1 v2
+      // upper_edge7 v2 v3
+      // upper_edge8 v3 v0
+
+      // bottom_edge9 v4 v5
+      // bottom_edge10 v5 v6
+      // bottom_edge11 v6 v7
+      // bottom_edge12 v7 v4
+      view
+        .array({
+          width: nPoints,
+          items: 1,
+          channels: 3,
+          data: points,
+          live: false,
+        })
+        .point({
+          color: 0xff4444,
+          size: 10,
+        });
+
+      view.array({
+        id: "vertical_edge1",
+        data: [ points[0],points[4]
+         ],
+        channels: 3,
+      }).line({
+          color: "yellow",
+          width: 5,});
+    
+      view.array({
+        id: "vertical_edge2",
+        data: [ points[1],points[5]
+         ],
+        channels: 3,
+      }).line({
+          color: "yellow",
+          width: 5,});
+
+      view.array({
+        id: "vertical_edge3",
+        data: [ points[2],points[6]
+         ],
+        channels: 3,
+      }).line({
+          color: "yellow",
+          width: 5,});
+    
+      view.array({
+        id: "vertical_edge4",
+        data: [ points[3],points[7]
+         ],
+        channels: 3,
+      }).line({
+          color: "yellow",
+          width: 5,});  
+
+      view.array({
+        id: "upper_edge5",
+        data: [ points[0],points[1]
+         ],
+        channels: 3,
+      }).line({
+          color: "yellow",
+          width: 5,});
+    
+      view.array({
+        id: "upper_edge6",
+        data: [ points[1],points[2]
+         ],
+        channels: 3,
+      }).line({
+          color: "yellow",
+          width: 5,});
+
+      view.array({
+        id: "upper_edge7",
+        data: [ points[2],points[3]
+         ],
+        channels: 3,
+      }).line({
+          color: "yellow",
+          width: 5,});
+    
+      view.array({
+        id: "upper_edge8",
+        data: [ points[3],points[0]
+         ],
+        channels: 3,
+      }).line({
+          color: "yellow",
+          width: 5,});
+
+          view.array({
+        id: "bottom_edge9",
+        data: [ points[4],points[5]
+         ],
+        channels: 3,
+      }).line({
+          color: "yellow",
+          width: 5,});
+    
+      view.array({
+        id: "bottom_edge10",
+        data: [ points[5],points[6]
+         ],
+        channels: 3,
+      }).line({
+          color: "yellow",
+          width: 5,});
+
+      view.array({
+        id: "bottom_edge11",
+        data: [ points[6],points[7]
+         ],
+        channels: 3,
+      }).line({
+          color: "yellow",
+          width: 5,});
+    
+      view.array({
+        id: "bottom_edge12",
+        data: [ points[7],points[4]
+         ],
+        channels: 3,
+      }).line({
+          color: "yellow",
+          width: 5,});  
+
+    
+      view.array({
+        id: "diagonal_line1",
+        data: [ [1,1,1],[-1,-1,-1]
+         ],
+        channels: 3,
+      }).line({
+          color: 0xffffff,
+          width: 2,
+        });
+        view.array({
+        id: "diagonal_line2",
+        data: [ [1,-1,1],[-1, 1,-1]
+         ],
+        channels: 3,
+      }).line({
+          color: 0xffffff,
+          width: 2,
+        });
+        view.array({
+        id: "diagonal_line3",
+        data: [ [-1,1,1],
+        [1, -1,-1]
+         ],
+        channels: 3,
+      }).line({
+          color: 0xffffff,
+          width: 2,
+        });
+        view.array({
+        id: "diagonal_line4",
+        data: [[1,1,-1],
+        [-1,-1, 1]
+         ],
+        channels: 3,
+      }).line({
+          color: 0xffffff,
+          width: 2,
+        });
+
+
+        view
+        .array({
+          data: [
+          [unit,unit + 0.1,unit],
+          [unit,unit + 0.1,-unit],
+          [-unit,unit + 0.1,-unit],
+          [-unit,unit + 0.1,unit],
+          [unit,-unit,unit],
+          [unit,-unit,-unit],
+          [-unit,-unit,-unit],
+          [-unit,-unit,unit]
+          ],
+          channels: 3, // necessary
+          live: false,
+        })
+        .text({
+          data: ["1","2" , "3","4","3","4" , "1","2"],
+        })
+        .label({
+          color: "orange",
+          // snap: false,
+          // outline: 1,
+          size: 30,
+          // offset: [0, -32],
+          depth: 0.5,
+          zIndex: 1,
+        });
+
+    </script>
+  </body>
+</html>
