@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="author" content="Noda shuto">
+      <meta name="description" content="LaTeX">    
+      <title>N.Shuto's Home Page</title>
+      <link rel="stylesheet" href="/css/main.css" type="text/css">
+   </head>
+   <body>
+      <h1 class="title">LaTeX</h1>
+
+
+      <div id="toc_container">
+         <p class="toc_title">Contents</p>
+         <ul class="toc_list">
+            <li><a href="#Installation">Installation</a>
+            <li><a href="#snippets">Setup code snippets</a>
+         </ul>
+      </div>
+
+      <hr><h2 class="Installation">Installation</h2>
+
+      <ul>
+         <li>Install TeX Live [<a href=" https://tug.org/texlive/"> TeX Live </a>].</li>
+         <li>Install latexmk via TeX Live Manager. See [<a href="http://www.personal.psu.edu/jcc8/latexmk/">CTAN</a>].</li>
+         <li>Download Visual Studio Code [<a href="https://code.visualstudio.com/download">here </a>].</li>
+         <li>Add a VScode Extension callded "LaTeX Workshop".</li>
+      </ul>
+      <hr>
+      <h2 class="snippets">Setup code snippets</h2>
+      Go to "File" >> "Preference" >> "Configure User Snippets" and open "latex.json" file. This file looks like below by default.
+
+      <pre>
+         <code>
+{
+   // Place your snippets for latex here. 
+   // ・・・
+   // same ids are connected.
+   // Example:
+   // "Print to console": {
+   // 	"prefix": "log",
+   // 	"body": [
+   // 		"console.log('$1');",
+   // 		"$2"
+   // 	],
+   // 	"description": "Log output to console"
+   // }
+}
+         </code>
+       </pre>
+Add your code snippets in the latex.json. Here is an example.
+       <pre>
+         <code>
+"article": {
+   "prefix": "article",
+   "body": [
+      "\\documentclass[${1:a4paper,11pt}]{${2:article}}",
+      "",
+      "",
+      "\\usepackage{amsmath, amssymb, amsfonts, latexsym, mathtools}",
+      "\\usepackage[amsmath,amsthm,thmmarks]{ntheorem}",
+      "\\usepackage{bm}",
+      "\\usepackage[dvipdfmx]{graphicx}",
+      "${3}",
+      "",
+      "\\begin{document}",
+      "",
+      "\\title{${4: title }}",
+      "\\author{${5: author }}",
+      "\\date{${6:\\today}}",
+      "\\maketitle",
+      "Let's write an article ...",
+      "",
+      "$0",
+      "",
+      "\\begin{thebibliography}{99}",
+      "\\bibitem{textbook} author, \\emph{title of a book}, publisher, year",
+      "\\end{thebibliography}",
+      "\\end{document}"
+   ],
+   "description": "template for an article"
+}
+         </code>
+       </pre>
+       Create new tex file and type the prefix (in this case "article") and Voilà! You can write a latex code anytime.
+       <pre>
+         <code>
+\documentclass[a4paper,11pt]{article}
+
+
+\usepackage{amsmath, amssymb, amsfonts, latexsym, mathtools}
+\usepackage[amsmath,amsthm,thmmarks]{ntheorem}
+\usepackage{bm}
+\usepackage[dvipdfmx]{graphicx}
+
+
+\begin{document}
+
+\title{ title }
+\author{ author }
+\date{\today}
+\maketitle
+Let's write an article ...
+
+
+
+\begin{thebibliography}{99}
+\bibitem{textbook} author, \emph{title of a book}, publisher, year
+\end{thebibliography}
+\end{document}
+         </code>
+       </pre>
+       <p>
+         <a href="/index.html">&#8592; Back to Home</a>
+      </p>
+   </body>
+   <body onload="myFunction()">
+      <hr>
+      <p class="center">  
+          &copy; N.Shūto 
+         
+      </p>
+      <p class="lastmodifiedtext">
+         last-modified: <span id="demo"></span>
+      </p>
+      <script>
+        function myFunction() {
+          var x = document.lastModified;
+          document.getElementById("demo").innerHTML = x;
+        }
+      </script>
+
+
+
+    </body>
+</html>
