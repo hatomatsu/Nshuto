@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="author" content="Noda Shûto">
+      <meta name="description" content="Homepage">    
+      <title>N.Shuto's Home Page</title>
+      <link rel="stylesheet" href="css\main.css" type="text/css">
+   </head>
+   <body>
+      <h1 class="title">Shûto Noda</h1>
+      <h1 class="about"><a href="html\about.html"> About me</a></h1>
+
+      <hr>
+      <p> 
+         
+      <blockquote>
+         "Being well-educated just means you are confused on a higher level"
+      </blockquote>
+
+      </p>
+
+      <article class="centre">
+         <div class="float-left"></div>
+         <div class="float-right"></div>
+         <div class="clear"></div>
+       </article>
+       <article class="float-left">
+         <div class="float-left"></div>
+         <div class="float-right"></div>
+       </article>
+       <article class="float-right">
+         <div class="float-left"></div>
+         <div class="float-right"></div>
+       </article>
+       <div class="clear"></div>
+       <article class="centre">
+         <div class="float-left"></div>
+         <div class="float-right"></div>
+       </article>
+
+
+
+      <section id="mathematics">
+         <h2>Mathematics</h2>
+         <ul>
+            <li>
+               convergence in prob => convergence in distribution [<a href="pdf_files/prob.pdf">pdf</a>]
+            </li>
+            <li>
+               symmetric difference of two sets [<a href="pdf_files/February 5, 2023.pdf">pdf</a>]
+            </li>
+         </ul>
+      </section>
+
+
+      <section id="mathematics_jp">
+         <h2>数学 (日本語)</h2>
+         <ul>
+         <li>
+            有限群の表現論の基礎 [<a href="pdf_files\fin_rep.pdf">pdf</a>]
+         </li>
+         </ul>
+      </section>
+
+
+      <section id="LaTeX">
+         <h2>LaTeX</h2>
+         <ul>
+            <li>
+               <a href="html/latex.html">LaTeX</a>
+            </li>
+         </ul>
+      </section>
+
+      <section id="miscellaneous">
+         <h2>Miscellaneous</h2>
+         <ul>
+            <li>
+               質問シート [<a href="pdf_files\question.pdf">pdf</a>]
+            </li>
+            <li>
+               <a href="html/study.html">How to study mathematics</a>
+            </li>
+            <li>
+               <a href="cube_traceball.html">Cube traceball ctrl</a>
+            </li>
+            <li>
+               <a href="cube_orbit.html">Cube orbit ctrl</a>
+            </li>
+         </ul>
+      </section>
+
+      <p>
+         Here's some random useful and interested links.
+         <a href="html/external.html">External Links / 外部リンク</a>
+      </p>
+
+      <p class="center">
+         <a href="#">&#8593; Back to Top</a>
+      </p>
+
+     
+
+     
+   </body>
+   <body onload="myFunction()">
+      <hr>
+      <p class="center">  
+          &copy; N.Shūto 
+         
+      </p>
+      <p class="lastmodifiedtext">
+         last-modified: <span id="demo"></span>
+      </p>
+      <script>
+        function myFunction() {
+          var x = document.lastModified;
+          document.getElementById("demo").innerHTML = x;
+        }
+      </script>
+    </body>
+</html>
