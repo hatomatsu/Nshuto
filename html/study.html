@@ -3,6 +3,7 @@
    <head>
       <meta charset="UTF-8">
       <meta name="author" content="Noda Shûto">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="description" content="How to Study Mathematics">   
       <title>How to Study Mathematics</title>
       <style>
@@ -11,8 +12,6 @@
             font-family: Arial;
             color: rgb(190, 195, 201);
             font-family: arial,sans-serif;
-            font-size: 18px;
-            min-width: 14px;
         }
 
         a:link {
@@ -38,37 +37,61 @@
         background-color: transparent;
         text-decoration: underline;
         }
+
+        #myDIV {
+        background-color: transparent;
+        }
+        button {
+            background-color:rgb(48,49,52);
+            border: none;
+            color: rgb(207,209,212);
+            padding: 8px 100px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+        }
       </style>
+      
    </head>
 
    <body>
-    <h1>How to Study Mathematics</h1>
-    <p> 
-        <blockquote>
-            "Being well-educated just means you are confused on a higher level"
-        </blockquote>
-    </p>
+    <h1>How to Study Mathematics</h1> 
+    <p>By Noda Shûto</p>
+    
+    <script>
+        function myFunction() {
+        var x = document.getElementById("myDIV");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+        }
+    </script>
 
-    <section id="tableofcontents" font-size: 14px>
-        <h2>Table of Contents</h2>
-        <ol>
-            <li> 
-                <a href="#introduction">Introduction</a>
-                <ol>
-                    <li><a href="#introduction-about-this-page">About This Page</a></li>
-                </ol>
-            </li>
-            <li><a href="#Memorization">Memorization</a></li>
-            <li><a href="#Basics">Learning the Basics</a></li>
-            <li><a href="#Examples">Importance of Examples and Counterexamples</a></li>
-            <li><a href="#Attitude">Attitude</a></li>
-            <li><a href="#Smallcircle">Draw a Small Circle</a></li>
-            <li><a href="#Aptitude">Aptitude</a></li>
-            <li><a href="#Readings">Readings</a></li>
-            <li><a href="#Output">Output</a></li>
-            <li><a href="#TheFeynmanTechnique">The Feynman Technique</a></li>
-            <li><a href="#References">References</a></li>
-        </ol>
+    <section id="tableofcontents">
+        <button onclick="myFunction()">Table of Contents</button>
+        <div id="myDIV">
+            <ol>
+                <li> 
+                    <a href="#introduction">Introduction</a>
+                    <ol>
+                        <li><a href="#introduction-about-this-page">About This Page</a></li>
+                    </ol>
+                </li>
+                <li><a href="#Memorization">Memorization</a></li>
+                <li><a href="#Basics">Learning the Basics</a></li>
+                <li><a href="#Examples">Importance of Examples and Counterexamples</a></li>
+                <li><a href="#Attitude">Attitude</a></li>
+                <li><a href="#Smallcircle">Draw a Small Circle</a></li>
+                <li><a href="#Aptitude">Aptitude</a></li>
+                <li><a href="#Readings">Readings</a></li>
+                <li><a href="#Output">Output</a></li>
+                <li><a href="#TheFeynmanTechnique">The Feynman Technique</a></li>
+                <li><a href="#References">References</a></li>
+            </ol>
+        </div>
     </section>
 
 
@@ -90,8 +113,8 @@
         <ul>
             <li>Understand the importance of each definition and theorem and why you need to memorize them.</li>
             <li>Share what you have memorized with someone else to reinforce the information in your memory.</li>
-            <li>Even if you forget the definitions and theorems over time, don't be discouraged. The process of memorization will still help improve your mathematical skills and maturity.</li>
         </ul>
+        <p>Even if you forget the definitions and theorems over time, don't be discouraged. The process of memorization will still help improve your mathematical skills and maturity.■</p>
     </article>
 
     <article id="Basics">
@@ -99,7 +122,7 @@
         <p>When learning something new, it's important to start with the basics and practice until you can understand them without thinking deeply. For example, when learning a new language, it's essential to learn the alphabet, basic vocabulary, and grammar rules before attempting to have complex conversations or write long essays.</p>
         <p>Similarly, in mathematics, you must first understand fundamental concepts such as definitions, basic operations, well-known theorems before moving on to more advanced concepts .</p>
         <p>By taking the time to learn the basics and practicing until you can understand them without much effort, you build a solid foundation that will help you as you tackle more complex topics in the future.</p>         
-        <p>Finally, aim to increase the number of operations and logic that can be processed unconsciously to improve your overall understanding and ability to process information more efficiently.</p>
+        <p>Finally, aim to increase the number of operations and logic that can be processed unconsciously to improve your overall understanding and ability to process information more efficiently. ■</p>
     </article>
 
     <article id="Examples">
@@ -107,7 +130,7 @@
         <p>Examples are important. When you understand a definition or theorem, you need to be able to state some examples. 
         Try to conceive some examples. 
         </p>
-        <p>If you meet something incomprehensible, make an example even if it is too trivial. Then generalize it.</p>
+        <p>If you meet something incomprehensible, make an example even if it is too trivial. Then generalize it. ■</p>
     </article>
 
     <article id="Attitude">
@@ -117,14 +140,14 @@
         
         </p>
         <p>
-        Keep asking why do I need this concept? Why does this concept important?
+        Keep asking why do I need this concept? Why does this concept important? ■
         </p>
     </article>
 
     
     <article id="Smallcircle">
         <h2>Draw a Small Circle</h2>
-        <p>Don't jump into the big ocean in the first place. Try to focus on mastering a small field or concept.</p>
+        <p>Don't jump into the big ocean in the first place. Try to focus on mastering a small field or concept. ■</p>
     </article>
 
 
@@ -154,7 +177,7 @@
                 </ul>
             </li>
         </ul>
-        In addition to these <b>strong interest in research topic </b>  and <b>daily constant research activity</b>  are necessary.
+        In addition to these <b>strong interest in research topic </b>  and <b>daily constant research activity</b>  are necessary.■
     </article>
 
     <article id="Readings">
@@ -167,16 +190,15 @@
         <li>Read the questions at the end of the chapter to help your brain notice key information while reading.</li>
         <li>Pay attention to <b>the bold words</b> , such as titles and subtitles, to understand the chapter's structure better.</li>
         <li>Read the first and last sentences of each paragraph to get an idea of its main topic and key points.</li>
-        <li>Finally, read through the chapter, take notes, and connect the dots to bring everything together.</li>
     </ol>
+    <p>Finally, read through the chapter, take notes, and connect the dots to bring everything together.■</p>
     </article>
 
     <article id="Output">
         <h2>Output</h2>
         <p>The output of your efforts is also important. 
         For example, writting small articles, posting videos to YouTube can be considered an output of your creative efforts. 
-        The Feynman Technique and the mind map are another options.
-        The input to output ratio is typically 4 to 6.</p>
+        The Feynman Technique and the mind map are another options. ■</p>
     </article>
 
     
@@ -187,7 +209,7 @@
             <li>Find a topic you want to learn and study it.</li>
             <li>Take a piece of paper and write down everything you just learned as if you're teaching it to someone else. 
                 <br> By doing this, you can find out what you have forgotten and come back to study it again. </li>
-            <li>After you've done everything, write it all in a simpler manner, which means use simpler words.</li>
+            <li>After you've done everything, write it all in a simpler manner, which means use simpler words. ■</li>
         </ol>
     </article>
 
@@ -210,7 +232,7 @@
         <a href="../index.html">&#8592; Back to Home</a>
     </p>
    </body>
-   <body onload="myFunction()">
+   <body onload="myTimeFunction()">
       <hr>
       <p class="center">  
           &copy; N.Shûto 
@@ -220,7 +242,7 @@
          last-modified: <span id="demo"></span>
       </p>
       <script>
-        function myFunction() {
+        function myTimeFunction() {
           var x = document.lastModified;
           document.getElementById("demo").innerHTML = x;
         }
