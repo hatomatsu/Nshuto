@@ -1,43 +1,71 @@
 body {
-   background-color: rgb(254,252,237);
- }
- h1 {
-   color: black;
- }
- p {
-   color: black;
- }
-
- #toc_container {
-   background: #f9f9f9 none repeat scroll 0 0;
-   border: 1px solid #aaa;
-   display: table;
-   font-size: 85%;
-   margin-bottom: 1em;
-   padding: 20px;
-   width: auto;
-   }
-   .toc_title {
-   font-weight: 700;
-   text-align: center;
-   }
-   #toc_container li, #toc_container ul, #toc_container ul li{
-   list-style: outside none none !important;
-   }
-
-.bigger {
-    font-size: larger;
+  background-color: rgb(32,33,36);
+  font-family: Arial;
+  color: rgb(190, 195, 201);
+  font-family: arial,sans-serif;
 }
 
+a:link {
+color: rgb(134,175,240);
+background-color: transparent;
+text-decoration: none;
+}
 
-code {
-  display: block; 
-	padding: 3px 3px 2px; 
-	font-size: 14px; 
-	line-height: 20px;
-	width: 100%;
-	background-color: #333;
-	font-family: arial;
-	color: #f7f7f7;
-	/* font-weight: bolder; */
+a:visited {
+color: rgb(145,105,181);
+background-color: transparent;
+text-decoration: none;
+}
+
+a:hover {
+/* color: rgba(0, 208, 255, 0.567); */
+background-color: transparent;
+text-decoration: underline;
+}
+
+a:active {
+/* color: yellow; */
+background-color: transparent;
+text-decoration: underline;
+}
+
+#myDIV {
+background-color: transparent;
+}
+button {
+  background-color:rgb(48,49,52);
+  border: none;
+  color: rgb(207,209,212);
+  padding: 8px 100px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+table, th, td {
+  border:0.5px solid whitesmoke;
+  background-color: transparent;
+  font-size: 18px;
+  min-width: 14px;
+  
+}
+
+div.container {
+  text-align: left;
+}
+
+ul.myUL {
+  display: inline-block;
+  text-align: left;
+}
+
+ 
+ol.myOL {
+  display: inline-block;
+  text-align: left;
+}
+
+.bigger {
+  font-size: larger;
 }

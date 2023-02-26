@@ -1,0 +1,83 @@
+body {
+   background-color: rgb(32,33,36);
+   font-family: Arial;
+   color: whitesmoke;
+   text-align: center;
+   font-family: arial,sans-serif;
+   font-size: 18px;
+   min-width: 14px;
+}
+ h1 {
+   color: whitesmoke;
+   text-align: center;
+   font-family: Arial;
+   /* background-color: rgb(48,49,52); */
+}
+h2 {
+   color: whitesmoke;
+   text-align: center;
+   font-family: Arial;
+   /* background-color: rgb(48,49,52); */
+}
+h3 {
+   color: whitesmoke;
+   text-align: center;
+   font-family: Arial;
+   /* background-color: rgb(48,49,52); */
+}
+p {
+   color: whitesmoke;
+   font-family: arial,sans-serif;
+   font-size: 18px;
+}
+
+a:link {
+   color: rgb(134,175,240);
+   background-color: transparent;
+   text-decoration: none;
+   }
+
+a:visited {
+color: rgb(145,105,181);
+background-color: transparent;
+text-decoration: none;
+}
+
+a:hover {
+/* color: rgba(0, 208, 255, 0.567); */
+background-color: transparent;
+text-decoration: underline;
+}
+
+a:active {
+/* color: yellow; */
+background-color: transparent;
+text-decoration: underline;
+}
+
+table, th, td {
+   border:0.5px solid whitesmoke;
+   background-color: transparent;
+   font-size: 18px;
+   min-width: 14px;
+   
+}
+
+div.container {
+   text-align: center;
+ }
+ 
+ ul.myUL {
+   display: inline-block;
+   text-align: left;
+ }
+
+  
+ ol.myOL {
+   display: inline-block;
+   text-align: left;
+ }
+
+ .bigger {
+   font-size: larger;
+}
