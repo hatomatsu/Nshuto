@@ -1,13 +1,32 @@
 \documentclass[a4paper,11pt]{book}
 
 
+% usepackage
 \usepackage{amsmath, amssymb, amsfonts, latexsym, mathtools}
 \usepackage[amsmath,amsthm,thmmarks]{ntheorem}
-\usepackage{bm}
-\usepackage[dvipdfmx]{graphicx}
+\usepackage{thmtools}
+\usepackage{mdframed} %for theorem frame
 \usepackage{physics}
+\usepackage[colorlinks=false,citecolor=black,linkcolor=black]{hyperref}%
+\usepackage{tikz-cd}
 \usepackage{tikz}
-
+\usepackage{tikz-3dplot}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{intersections,calc,arrows.meta}
+\usepackage{url}
+\usepackage{bm} % for vector bold
+\usepackage{amscd} % For diagram
+\usepackage{cases}% case 
+\usepackage{cancel}% canceling
+\usepackage{subfig}
+\usepackage{thm-restate}
+\usepackage{dynkin-diagrams}
+\usepackage{pgfkeys, pgfopts}
+\usepackage{ytableau}
+\usepackage{array} % for table width
+\usepackage{hhline} % double horizontal line in table https://ftp.yz.yamagata-u.ac.jp/pub/CTAN/macros/latex/required/tools/hhline.pdf
+\usepackage{xcolor}
+\usepackage{pagecolor,lipsum} % http://ctan.org/pkg/{pagecolor,lipsum}
 
 \begin{document}
 
@@ -17,6 +36,18 @@
 \maketitle
 Let's write an article ...
 
+\url{https://mathlog.info/articles/1403}
+
+Let $ k \geq 2 $ be a natural number.
+We define a sequence $ \left\{ a_n \right\} $ by
+\begin{equation*}
+  \begin{cases}
+    a_{n+k} = a_{n+k-1} + a_{n+k-2} + \cdots + a_{n} = \displaystyle \sum_{i=n}^{n+k-1}a_{i} \\
+    a_0 = a_1 = \cdots = a_{k-2} = 0 \\
+    a_{k-1} = 1 .
+  \end{cases}
+\end{equation*}
+We call $ \left\{ a_n \right\}  $ a generalized Fibonacci sequence for $ k $.  
 
 
 
