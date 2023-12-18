@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Typing Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      
+      
+      height: 100vh;
+      margin: 0;
+
+      margin: 0;
+      padding: 0;
+    }
+
+    #title {
+      text-align: center;
+      margin-top: 50px;
+      margin-bottom: 40px;
+
+    }
+
+    #game-container {
+      margin-top: 20px;
+    }
+
+    #equation {
+      font-size: larger;
+    }
+
+    .correct {
+      color: green;
+    }
+
+    .incorrect {
+      color: red;
+    }
+
+    #score-panel {
+      text-align: center;
+      font-size: 18px;
+    }
+  </style>
+    <script>
+      let words = ["e^{i\\pi}+1=0"];
+      let currentWordIndex = 0;
+      let currentWord = words[currentWordIndex];
+      let currentWordLength = currentWord.length;
+      let startTime, endTime, correctCount, totalCount;
+  
+      function startGame() {
+        currentWordIndex = 0;
+        currentWord = generateRandomWord();
+        currentWordLength = currentWord.length;
+        startTime = new Date();
+        correctCount = 0;
+        totalCount = 0;
+  
+        updateQuestion();
+        updateScorePanel();
+      }
+  
+      function generateRandomWord() {
+        // Replace this with your logic to generate random words or phrases
+        return words[Math.floor(Math.random() * words.length)];
+      }
+  
+      function updateQuestion() {
+        document.getElementById("start").innerHTML = generateHighlightedString();
+      }
+  
+      function generateHighlightedString() {
+        const currentChar = currentWord.charAt(totalCount);
+        const remainingText = currentWord.substring(totalCount + 1, currentWordLength);
+        const highlightedText = `<span class="correct">${currentChar}</span>`;
+        return highlightedText + remainingText;
+      }
+  
+      function handleInput(event) {
+        const keyCode = event.key;
+
+        // Ignore the Shift key
+        if (keyCode === 'Shift') {
+          return;
+        }
+
+        if (currentWord.charAt(totalCount) == keyCode) {
+          correctCount++;
+        } else {
+          document.getElementById("start").classList.add("incorrect");
+          setTimeout(() => {
+            document.getElementById("start").classList.remove("incorrect");
+          }, 200);
+        }
+
+        totalCount++;
+
+        if (totalCount === currentWordLength) {
+          currentWord = generateRandomWord();
+          currentWordLength = currentWord.length;
+          totalCount = 0;
+        }
+
+        updateQuestion();
+        updateScorePanel();
+      }
+  
+      function updateScorePanel() {
+        const elapsedTimeInSeconds = (new Date() - startTime) / 1000;
+        const charactersPerMinute = (correctCount / elapsedTimeInSeconds) * 60;
+  
+        document.getElementById("score-panel").innerText = `Score: ${charactersPerMinute.toFixed(2)} CPM`;
+      }
+  
+      window.addEventListener("keydown", handleInput);
+      window.addEventListener("load", startGame);
+    </script>
+   <!-- Include MathJax script -->
+   <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+</head>
+<body>
+  <div id="title">
+    <h1>Typing Practice for LaTeX<br /></h1>
+    <p></p>
+  </div>
+
+  <div id="equation">
+    \[ e^{i\pi}+1=0 \]
+  </div>
+  
+  <div id="game-container">
+    <center>
+      <h1 id="start" class="text">Press any key to start.</h1>
+      <div id="score-panel">Score: 0 CPM</div>
+    </center>
+  </div>
+</body>
+</html>
