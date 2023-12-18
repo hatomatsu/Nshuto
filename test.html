@@ -22,6 +22,7 @@
 
     #game-container {
       margin-top: 20px;
+      width:auto;
       font-family: Consolas, monaco, monospace; 
       font-size: 1.3em !important;
     }
@@ -73,7 +74,7 @@
     "S(x)=\\frac{1}{1+e^{-1}}",
     "x=\\frac{-b\\pm\\sqrt{b^2-4ac}}{2a}",
     "\\frac{1}{3}=0.333\\cdots",
-    "\\frac{1}{\\pi}=\\frac{2\\sqrt{2}}{99^2}\\sum_{n=0}^{\\infty}\\frac{(4n)!(1103+26390n)}{(4^n99^nn!)^{4}}"    
+    // "\\frac{1}{\\pi}=\\frac{2\\sqrt{2}}{99^2}\\sum_{n=0}^{\\infty}\\frac{(4n)!(1103+26390n)}{(4^n99^nn!)^{4}}"    
     ];
     let currentWordIndex = 0;
     let currentWord = words[currentWordIndex];
@@ -108,10 +109,11 @@
     function handleInput(event) {
       const keyCode = event.key;
 
-      // Ignore the Shift key
-      // if (keyCode === 'Shift') {
-      //   return;
-      // }
+      if (keyCode === 'Shift') {
+        shiftKeyPressed = true;
+        return; // If the Shift key is pressed, exit without performing any actions
+      }
+
 
       if (currentWord.charAt(totalCount) == keyCode) {
         correctCount++;

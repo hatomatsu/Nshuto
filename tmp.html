@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Typing Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 50px;
+    }
+
+    #word-container {
+      font-size: 2em;
+      margin-top: 20px;
+    }
+
+    #input-box {
+      font-size: 1em;
+      margin-top: 20px;
+      padding: 5px;
+    }
+
+    #score {
+      font-size: 1.5em;
+      margin-top: 20px;
+    }
+  </style>
+  <script>
+    const words = ["apple", "banana", "cherry", "orange", "grape", "kiwi", "melon"];
+    let currentWordIndex = 0;
+    let currentWord = words[currentWordIndex];
+    let score = 0;
+
+    function startGame() {
+      document.getElementById("word-container").textContent = currentWord;
+      document.getElementById("input-box").value = "";
+      document.getElementById("input-box").focus();
+    }
+
+    function checkInput() {
+      const inputBox = document.getElementById("input-box");
+      const typedWord = inputBox.value.trim();
+
+      if (typedWord.toLowerCase() === currentWord.toLowerCase()) {
+        // Correct word, update score and move to the next word
+        score++;
+        currentWordIndex = (currentWordIndex + 1) % words.length;
+        currentWord = words[currentWordIndex];
+
+        // Update display
+        document.getElementById("score").textContent = "Score: " + score;
+        startGame();
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>Typing Game</h1>
+  <div id="word-container"></div>
+  <input type="text" id="input-box" oninput="checkInput()">
+  <div id="score">Score: 0</div>
+
+  <!-- Start the game on page load -->
+  <script>
+    window.addEventListener("load", startGame);
+  </script>
+</body>
+</html>
