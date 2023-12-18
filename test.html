@@ -5,16 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Typing Game</title>
   <style>
-    .MathJax {
-      font-size: 4.0em !important;
-    }
     body {
       font-family: Arial, sans-serif;
-      
-      
       height: 100vh;
-      margin: 0;
-
       margin: 0;
       padding: 0;
     }
@@ -23,18 +16,17 @@
       text-align: center;
       margin-top: 50px;
       margin-bottom: 40px;
-
     }
-    
-    
+
+    .MathJax {
+      font-size: 4.0em !important;
+    }
 
     #game-container {
       margin-top: 20px;
       font-family: Consolas, monaco, monospace; 
       font-size: 1.3em !important;
     }
-
-
 
     .correct {
       color: teal;
@@ -48,104 +40,128 @@
       text-align: center;
       font-size: 18px;
     }
-
-
   </style>
-    <script>
-      let words = ["e^{i\\pi}+1=0"];
-      let currentWordIndex = 0;
-      let currentWord = words[currentWordIndex];
-      let currentWordLength = currentWord.length;
-      let startTime, endTime, correctCount, totalCount;
-  
-      function startGame() {
-        currentWordIndex = 0;
-        currentWord = generateRandomWord();
-        currentWordLength = currentWord.length;
-        startTime = new Date();
-        correctCount = 0;
-        totalCount = 0;
-  
-        updateQuestion();
-        updateScorePanel();
-      }
-  
-      function generateRandomWord() {
-        // Replace this with your logic to generate random words or phrases
-        return words[Math.floor(Math.random() * words.length)];
-      }
-  
-      function updateQuestion() {
-        document.getElementById("start").innerHTML = generateHighlightedString();
-      }
-  
-      function generateHighlightedString() {
-        const currentChar = currentWord.charAt(totalCount);
-        const remainingText = currentWord.substring(totalCount + 1, currentWordLength);
-        const highlightedText = `<span class="correct">${currentChar}</span>`;
-        return highlightedText + remainingText;
-      }
-  
-      function handleInput(event) {
-        const keyCode = event.key;
+  <!-- Include MathJax script -->
+  <script type="text/javascript" async
+    src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script type="text/javascript" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+  <script src="config.js" defer></script>
+  <script>
+    let words = [
+    "e^{i\\pi}+1=0",
+    "\\sqrt{2^2}=4",
+    "\\int_{a}^{b}x^2\\,dx",
+    "F=ma",
+    "\\sum_{n=1}^\\infty\\frac{1}{n^2}",
+    "E=mc^2",
+    "\\vec{F}=m\\vec{a}",
+    "\\lim_{{x\\to\\infty}}f(x)",
+    "\\Delta(x)\\cdot\\Delta(p)\\geq\\frac{\\hbar}{2}",
+    "\\sin^2(x)+\\cos^2(x)=1"
+    ];
+    let currentWordIndex = 0;
+    let currentWord = words[currentWordIndex];
+    let currentWordLength = currentWord.length;
+    let startTime, correctCount, totalCount;
 
-        // Ignore the Shift key
-        if (keyCode === 'Shift') {
-          return;
-        }
+    function startGame() {
+      startTime = new Date();
+      correctCount = 0;
+      totalCount = 0;
 
-        if (currentWord.charAt(totalCount) == keyCode) {
-          correctCount++;
-        } else {
-          document.getElementById("start").classList.add("incorrect");
-          setTimeout(() => {
-            document.getElementById("start").classList.remove("incorrect");
-          }, 200);
-        }
+      updateQuestion();
+      updateScorePanel();
+      updateMathJaxEquation(currentWord);
+    }
 
+    function generateRandomWord() {
+      return words[Math.floor(Math.random() * words.length)];
+    }
+
+    function updateQuestion() {
+      document.getElementById("start").innerHTML = generateHighlightedString();
+    }
+
+    function generateHighlightedString() {
+      const currentChar = currentWord.charAt(totalCount);
+      const remainingText = currentWord.substring(totalCount + 1, currentWordLength);
+      const highlightedText = `<span class="correct">${currentChar}</span>`;
+      return highlightedText + remainingText;
+    }
+
+    function handleInput(event) {
+      const keyCode = event.key;
+
+      // Ignore the Shift key
+      if (keyCode === 'Shift') {
+        return;
+      }
+
+      if (currentWord.charAt(totalCount) == keyCode) {
+        correctCount++;
         totalCount++;
 
         if (totalCount === currentWordLength) {
+          currentWordIndex++; // Move to the next word
           currentWord = generateRandomWord();
           currentWordLength = currentWord.length;
           totalCount = 0;
+          updateMathJaxEquation(currentWord);
+          updateQuestion();
+          updateScorePanel();
         }
 
         updateQuestion();
         updateScorePanel();
+      } else {
+        document.getElementById("start").classList.add("incorrect");
+        setTimeout(() => {
+          document.getElementById("start").classList.remove("incorrect");
+        }, 200);
       }
-  
-      function updateScorePanel() {
-        const elapsedTimeInSeconds = (new Date() - startTime) / 1000;
-        const charactersPerMinute = (correctCount / elapsedTimeInSeconds) * 60;
-  
-        document.getElementById("score-panel").innerText = `Score: ${charactersPerMinute.toFixed(2)} CPM`;
-      }
-  
-      window.addEventListener("keydown", handleInput);
-      window.addEventListener("load", startGame);
-    </script>
-   <!-- Include MathJax script -->
-    <script type="text/javascript" src="config.js" defer></script>
-    <script type="text/javascript" id="MathJax-script" defer
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-    <script type="text/javascript" async
-      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
-    </script>
+    }
+
+    function updateScorePanel() {
+      const elapsedTimeInSeconds = (new Date() - startTime) / 1000;
+      const charactersPerMinute = (correctCount / elapsedTimeInSeconds) * 60;
+
+      document.getElementById("score-panel").innerText = `Score: ${charactersPerMinute.toFixed(2)} CPM`;
+    }
+
+    function updateMathJaxEquation(equationString) {
+      // Get the MathJax element
+      var equationContainer = document.getElementById('equation-container');
+
+      // Set the content with the equation string
+      equationContainer.innerHTML = '$$' + equationString + '$$';
+
+      // Update MathJax
+      MathJax.Hub.Typeset([equationContainer]);
+    }
+
+    // Remove the event listener for keydown
+    window.addEventListener("keydown", handleInput);
+    window.addEventListener("load", startGame);
+
+
+  </script>
 </head>
 <body>
   <div id="title">
-    <h1>Typing Practice for  LaTeX<br /></h1>
+    <h1>Typing Practice for LaTeX<br /></h1>
     <p></p>
   </div>
 
-  <div id="equation">
-    \[ e^{i\pi}+1=0 \]
-  </div>
+  <!-- Element to render MathJax equations -->
+  <div id="equation-container"></div>
   
   <div id="game-container">
     <center>
-      <h1 id="start" class="text">Press any key to start.</h1>
+      <h1 id="start" class="text">loading...</h1>
       <div id="score-panel">Score: 0 CPM</div>
     </center>
   </div>
