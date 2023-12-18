@@ -18,9 +18,7 @@
       margin-bottom: 40px;
     }
 
-    .MathJax {
-      font-size: 4.0em !important;
-    }
+
 
     #game-container {
       margin-top: 20px;
@@ -145,7 +143,7 @@
       var equationContainer = document.getElementById('equation-container');
 
       // Set the content with the equation string
-      equationContainer.innerHTML = '$$' + equationString + '$$';
+      equationContainer.innerHTML = '$$' + '\\Huge ' + equationString + '$$';
 
       // Update MathJax
       MathJax.Hub.Typeset([equationContainer]);
