@@ -22,18 +22,21 @@
       margin-bottom: 40px;
 
     }
+    
+    .MathJax {
+      font-size: 4.0em !important;
+    }
 
     #game-container {
       margin-top: 20px;
       font-family: Consolas, monaco, monospace; 
+      font-size: 1.3em !important;
     }
 
-    #equation {
-      font-size: larger;
-    }
+
 
     .correct {
-      color: green;
+      color: teal;
     }
 
     .incorrect {
@@ -44,6 +47,8 @@
       text-align: center;
       font-size: 18px;
     }
+
+
   </style>
     <script>
       let words = ["e^{i\\pi}+1=0"];
@@ -120,13 +125,16 @@
       window.addEventListener("load", startGame);
     </script>
    <!-- Include MathJax script -->
-   <script type="text/javascript" async
-    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
-  </script>
+    <script type="text/javascript" src="config.js" defer></script>
+    <script type="text/javascript" id="MathJax-script" defer
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
 </head>
 <body>
   <div id="title">
-    <h1>Typing Practice for LaTeX<br /></h1>
+    <h1>Typing Practice for  LaTeX<br /></h1>
     <p></p>
   </div>
 
