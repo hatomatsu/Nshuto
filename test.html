@@ -107,7 +107,7 @@
     }
 
     function handleInput(event) {
-      const keyCode = event.key;
+      let keyCode = event.key;
 
       if (keyCode === 'Shift') {
         shiftKeyPressed = true;
@@ -127,7 +127,6 @@
         keyCode = '\\';
       }
 
-      console.log('Pressed key:', event.key);
 
 
 
