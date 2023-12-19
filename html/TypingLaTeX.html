@@ -22,6 +22,7 @@
 
     #game-container {
       margin-top: 20px;
+      width:auto;
       font-family: Consolas, monaco, monospace; 
       font-size: 1.3em !important;
     }
@@ -58,21 +59,51 @@
   </script>
   <script src="config.js" defer></script>
   <script>
-    let words = [
+    let words = [    
+    "a^2+b^2=c^2",
     "e^{i\\pi}+1=0",
     "\\int_{a}^{b}x^2\\,dx",
     "F=ma",
     "\\sum_{n=1}^\\infty\\frac{1}{n^2}",
     "E=mc^2",
-    "\\vec{F}=m\\vec{a}",
     "\\lim_{x\\to\\infty}f(x)",
-    "\\Delta(x)\\cdot\\Delta(p)\\geq\\frac{\\hbar}{2}",
+    "\\Delta{x}\\cdot\\Delta{p}\\geq\\frac{\\hbar}{2}",
     "\\sin^2(x)+\\cos^2(x)=1",
     "\\int_{-\\infty}^{\\infty}e^{-x^2}\\,dx=\\sqrt{\\pi}",
     "x\\in\\mathbb{R}",
+    "a+bi\\in\\mathbb{C}",
+    "n\\in\\mathbb{N}",
+    "z\\in\\mathbb{Z}",
     "S(x)=\\frac{1}{1+e^{-1}}",
     "x=\\frac{-b\\pm\\sqrt{b^2-4ac}}{2a}",
     "\\frac{1}{3}=0.333\\cdots",
+    "PV=nRT",
+    "F=k\\frac{q_1q_2}{r^2}",
+    "F=-\\frac{GMm}{r^2}\\vec{r}",
+    "T=\\frac{2\\pi}{\\omega}",
+    "r(\\theta)=\\frac{p}{1+\\varepsilon\\cos(\\theta)}",
+    "\\sin(\\alpha+\\beta)=\\sin\\alpha\\cos\\beta+\\cos\\alpha\\sin\\beta",
+    "S_n=\\frac{a_1(1-r^n)}{1-r}",
+    "\\frac{a+b}{2}\\geq\\sqrt{ab}",
+    "\\sum_{k=1}^nk=\\frac{1}{2}n(n+1)",
+    "\\sum_{k=1}^nk^2=\\frac{1}{6}n(n+1)(2n+1)",
+    "\\log_a(mn)=\\log_a(m)+\\log_a(n)",
+    "\\frac{f(b)-f(a)}{b-a}=f^\\prime(c)",
+    "y-f(a)=f^\\prime(a)(x-a)",
+    "x^2+y^2=1",
+    "\\int\\frac{1}{x}\\,dx=\\log|x|+C",
+    "E\\psi=(im\\beta+\\alpha\\cdot\\vec{p})\\phi", 
+    "\\nabla\\cdot\\boldsymbol{B}=0",
+    "\\nabla\\times\\boldsymbol{H}-\\frac{\\partial\\boldsymbol{D}}{\\partial{t}}=\\boldsymbol{J}",
+    "\\phi\\sim1.618",
+    "\\pi=3.14159\\dots",
+    "i^2=j^2=k^2=ijk=-1",
+    "a^n+b^n=c^n",
+    "\\{\\alpha+\\beta\\sqrt{-1}\\mid\\alpha,\\beta\\in\\mathbb{R}\\}",
+    "f\\colon\\mathbb{R}\\to\\mathbb{R}",
+    "\\begin{bmatrix}a&b\\\\c&d\\end{bmatrix}",
+    "\\int_MPf(\\Omega)=(2\\pi)^n\\chi(M)",
+    "\\phi=\\frac{1+\\sqrt{5}}{2}",
     "\\frac{1}{\\pi}=\\frac{2\\sqrt{2}}{99^2}\\sum_{n=0}^{\\infty}\\frac{(4n)!(1103+26390n)}{(4^n99^nn!)^{4}}"    
     ];
     let currentWordIndex = 0;
@@ -106,12 +137,27 @@
     }
 
     function handleInput(event) {
-      const keyCode = event.key;
+      let keyCode = event.key;
 
-      // Ignore the Shift key
       if (keyCode === 'Shift') {
-        return;
+        shiftKeyPressed = true;
+        return; // If the Shift key is pressed, exit without performing any actions
       }
+
+        // Replace Yen symbol with backslash
+      if (keyCode === '¥') {
+        keyCode = '\\';
+      }
+
+      if (keyCode === '&yen;') {
+        keyCode = '\\';
+      }
+
+      if (keyCode === '&bsol;') {
+        keyCode = '\\';
+      }
+
+      // console.log('Pressed key:', event.key);
 
       if (currentWord.charAt(totalCount) == keyCode) {
         correctCount++;
