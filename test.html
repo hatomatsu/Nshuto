@@ -114,6 +114,12 @@
         return; // If the Shift key is pressed, exit without performing any actions
       }
 
+        // Replace Yen symbol with backslash
+      if (keyCode === '¥') {
+        keyCode = '\\';
+      }
+
+
 
       if (currentWord.charAt(totalCount) == keyCode) {
         correctCount++;
