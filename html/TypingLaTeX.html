@@ -61,17 +61,18 @@
   </script>
   <script src="config.js" defer></script>
   <script>
-    let words = [           
+    let words = [ 
+    "\\int_{-\\infty}^\\infty e^{-x^2}\\,dx=\\sqrt\\pi",
     "a^2+b^2=c^2",
     "e^{i\\pi}+1=0",
-    "\\int_{a}^{b}x^2\\,dx",
+    "\\int_a^b x^2\\,dx",
     "F=ma",
     "\\sum_{n=1}^\\infty\\frac{1}{n^2}",
     "E=mc^2",
     "\\lim_{x\\to\\infty}f(x)",
     "\\Delta{x}\\cdot\\Delta{p}\\geq\\frac{\\hbar}{2}",
     "\\sin^2(x)+\\cos^2(x)=1",
-    "\\int_{-\\infty}^{\\infty}e^{-x^2}\\,dx=\\sqrt{\\pi}",
+    "\\int_{-\\infty}^\\infty e^{-x^2}\\,dx=\\sqrt{\\pi}",
     "x\\in\\mathbb{R}",
     "a+bi\\in\\mathbb{C}",
     "n\\in\\mathbb{N}",
@@ -122,8 +123,8 @@
     "A^c=X\\setminus{A}",    
     "u\\circ{v}",    
     "\\{a_n\\}",    
-    "\\lfloor{n-1}\\rfloor",
-    "\\lvert{-a}\\rvert",
+    "\\lfloor n \\rfloor",
+    "\\lvert -a \\rvert",
      "\\aleph_0",     
     "\\{\\emptyset,X\\}",    
     "\\emptyset\\subset{X}",    
@@ -134,8 +135,8 @@
     "\\{\\,a,b,c\\,\\}",
     "\\pmod{p}",
     "\\mod{p}",
-    "c\\equiv{d}\\mod{p}",
-    "a\\equiv{b}\\pmod{p}",
+    "a\\equiv b\\mod{p}",
+    "a\\equiv b\\pmod{p}",
     "\\tilde{a}",
     "\\overrightarrow{\\mathrm{OA}}",
     "\\underbrace{a+b+c}",
@@ -148,7 +149,7 @@
     "\\begin{cases}x&x\\geq0\\\\-x&\\text{otherwise}\\end{cases}",
     "\\operatorname{Hom}_A(M,N)",    
     "X/{\\sim}",
-    "X\\bigtriangleup{Y}=(X-Y)\\cup(Y-X)",
+    "X\\bigtriangleup Y=(X-Y)\\cup(Y-X)",
 
     ];
     let currentWordIndex = 0;
@@ -156,6 +157,16 @@
     let currentWordLength = currentWord.length;
     let startTime, correctCount, totalCount;
 
+    document.addEventListener('keydown', function(event) {
+        if (event.key === ' ' || event.code === 'Space') {
+            event.preventDefault();
+        }
+    });
+
+    // Replace space in a script
+    function replaceSpaces(script, replacementChar = '⎵') {
+        return script.replace(/ /g, replacementChar);
+    }
     function startGame() {
       startTime = new Date();
       correctCount = 0;
@@ -178,8 +189,10 @@
       const currentChar = currentWord.charAt(totalCount);
       const remainingText = currentWord.substring(totalCount + 1, currentWordLength);
       const highlightedText = `<span class="correct">${currentChar}</span>`;
-      return highlightedText + remainingText;
+      return replaceSpaces(highlightedText + remainingText);
     }
+
+
 
     function handleInput(event) {
       let keyCode = event.key;
