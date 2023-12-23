@@ -61,7 +61,7 @@
   </script>
   <script src="config.js" defer></script>
   <script>
-    let words = [      
+    let words = [  
     "e^{i\\pi}+1=0",
     "a^2+b^2=c^2",
     "\\int_a^b x^2\\,dx",
@@ -99,12 +99,14 @@
     "\\iint_{\\mathbb{R}^2}f(x,y)\\,dxdy",
     "E\\psi=(im\\beta+\\alpha\\cdot\\vec{p})\\phi", 
     "\\nabla\\cdot\\mathbf{B}=0",    
-    "\\nabla\\cdot\\mathbf{E}=\\frac{\\rho}{\\varepsilon_0}",
+    "\\nabla\\cdot\\mathbf{E}=\\frac{\\rho}{\\varepsilon_0}",    
+    "\\nabla\\times\\mathbf{E}=-\\frac{\\partial\\mathbf{B}}{\\partial t}",
     "\\nabla\\times\\mathbf{H}-\\frac{\\partial\\mathbf{D}}{\\partial t}=\\mathbf{J}",
     "\\phi\\sim1.618",
     "\\pi=3.14159\\dots",
     "i^2=j^2=k^2=ijk=-1",
-    "a^n+b^n=c^n",
+    "a^n+b^n=c^n",    
+    "S=\\pi r^2",
     "f\\colon\\mathbb{R}\\to\\mathbb{R}",
     "\\begin{bmatrix}a&b\\\\c&d\\end{bmatrix}",
     "\\begin{vmatrix}a&b\\\\c&d\\end{vmatrix}",
@@ -152,8 +154,11 @@
     "\\operatorname{Hom}_A(M,N)",
     "X/{\\sim}",
     "X\\bigtriangleup Y=(X-Y)\\cup(Y-X)",
-    "\\mathbf{v}\\cdot\\nabla\\mathbf{v}",
-    "G_{\\mu\\nu}+\\Lambda g_{\\mu\\nu}=\\frac{8\\pi G}{c^4}T_{\\mu\\nu}",
+    "\\mathbf{v}\\cdot\\nabla\\mathbf{v}",    
+    "D^\\mu F_{\\mu\\nu}=J_\\nu",        
+    "V=I\\times R",
+    "G_{\\mu\\nu}+\\Lambda g_{\\mu\\nu}=\\frac{8\\pi G}{c^4}T_{\\mu\\nu}",    
+    "\\text{pH}=\\text{pKa}+\\log\\left(\\frac{[\\text{A}^-]}{[\\text{HA}]}\\right)",
     ];
     let currentWordIndex = 0;
     let currentWord = words[currentWordIndex];
