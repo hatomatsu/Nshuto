@@ -61,7 +61,7 @@
   </script>
   <script src="config.js" defer></script>
   <script>
-    let words = [
+    let words = [      
     "e^{i\\pi}+1=0",
     "a^2+b^2=c^2",
     "\\int_a^b x^2\\,dx",
@@ -98,8 +98,9 @@
     "\\int\\frac{1}{x}\\,dx=\\log|x|+C",    
     "\\iint_{\\mathbb{R}^2}f(x,y)\\,dxdy",
     "E\\psi=(im\\beta+\\alpha\\cdot\\vec{p})\\phi", 
-    "\\nabla\\cdot\\boldsymbol{B}=0",
-    "\\nabla\\times\\boldsymbol{H}-\\frac{\\partial\\boldsymbol{D}}{\\partial{t}}=\\boldsymbol{J}",
+    "\\nabla\\cdot\\mathbf{B}=0",    
+    "\\nabla\\cdot\\mathbf{E}=\\frac{\\rho}{\\varepsilon_0}",
+    "\\nabla\\times\\mathbf{H}-\\frac{\\partial\\mathbf{D}}{\\partial t}=\\mathbf{J}",
     "\\phi\\sim1.618",
     "\\pi=3.14159\\dots",
     "i^2=j^2=k^2=ijk=-1",
@@ -113,7 +114,8 @@
     "\\frac1\\pi=\\frac{2\\sqrt2}{99^2}\\sum_{n=0}^\\infty\\frac{(4n)!(1103+26390n)}{(4^n99^nn!)^4}" ,
     "e=\\sum_{k=1}^\\infty\\frac{1}{k!}",
     "e=2.718\\dots",
-    "\\LaTeX",
+    "\\LaTeX",    
+    "i\\hbar\\frac{\\partial\\psi}{\\partial t}=\\hat{H}\\psi",
     "\\mathscr{A}",
     "\\mathbb{P}\\colon\\mathcal{F}\\to[0,1]",
     "f(z)=\\text{const.}",
@@ -150,7 +152,7 @@
     "\\operatorname{Hom}_A(M,N)",
     "X/{\\sim}",
     "X\\bigtriangleup Y=(X-Y)\\cup(Y-X)",
-
+    "G_{\\mu\\nu}+\\Lambda g_{\\mu\\nu}=\\frac{8\\pi G}{c^4}T_{\\mu\\nu}",
     ];
     let currentWordIndex = 0;
     let currentWord = words[currentWordIndex];
