@@ -1,0 +1,55 @@
+body {
+  background-color: rgb(32,33,36);
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+#title {
+  color: white;
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 40px;
+}
+
+
+
+#theme-button{
+  padding: 15px 25px;
+  text-decoration: none;
+  font-family: Consolas, monaco, monospace; 
+}
+
+#game-container {
+  color: greenyellow;
+  margin-top: 20px;
+  width:auto;
+  font-family: Consolas, monaco, monospace; 
+  font-size: 1.3em !important;
+}
+
+#table-container {
+  color: white;
+  margin-top: 20px;
+  font-family: Consolas, monaco, monospace; 
+  font-size: 1.3em !important;
+}
+
+.correct {
+  color: teal;
+}
+
+.incorrect {
+  color: red;
+}
+
+#score-panel {
+  color: white;
+  text-align: center;
+  font-size: 18px;
+}
+td {
+  color: white;
+padding: 0 15px;
+}
