@@ -1,0 +1,101 @@
+
+
+<!DOCTYPE html>
+<html lang="jp">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="author" content="Shuto Noda">
+      <meta name="description" content="Homepage"> 
+      <!-- <base href="https://hatomatsu.github.io/Nshuto/index.html"> -->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="shortcut icon" type="images\logo.png" href="images\favicon.ico">
+      <title>NA</title>
+      <link rel="stylesheet" href="https://latex.vercel.app/style.css">
+      <link rel="stylesheet" href="https://latex.vercel.app/prism.css">
+   </head>
+   <body id="top">
+    
+  <nav role="navigation" class="toc">
+    <h2>目次</h2>
+    <ol>
+      <li><a href="https://latex.vercel.app/#getting-started">Getting Started</a></li>
+      <li>
+        <a href="https://latex.vercel.app/#class-based-elements">Class-based Elements</a>
+        <ol>
+          <li><a href="https://latex.vercel.app/#author-abstract">Author and Abstract</a></li>
+          <li>
+            <a href="https://latex.vercel.app/#tdpl">Theorems, Definitions and Proofs</a>
+            <ol>
+              <li><a href="https://latex.vercel.app/#proofs-theorems">Proofs &amp; Theorems</a></li>
+              <li><a href="https://latex.vercel.app/#lemmas">Lemmas</a></li>
+              <li><a href="https://latex.vercel.app/#definitions">Definitions</a></li>
+            </ol>
+          </li>
+          <li><a href="https://latex.vercel.app/#paragraphs">Paragraphs</a></li>
+          <li><a href="https://latex.vercel.app/#table-classes">Table Classes</a>
+            <ol>
+              <li><a href="https://latex.vercel.app/#table-borders">Custom Table Borders</a></li>
+              <li><a href="https://latex.vercel.app/#table-column-aligment">Table Column Alignment</a></li>
+            </ol>
+          </li>
+        </ol>
+      </li>
+      <li><a href="https://latex.vercel.app/#language-support">Language Support</a></li>
+      <li><a href="https://latex.vercel.app/#sidenotes">Sidenotes</a></li>
+      <li><a href="https://latex.vercel.app/#dark-mode">Dark Mode</a></li>
+      <li><a href="https://latex.vercel.app/#alternative-typeface">Alternative Typeface</a></li>
+      <li>
+        <a href="https://latex.vercel.app/#html-elements">HTML Elements</a>
+        <ol>
+          <li><a href="https://latex.vercel.app/#text-formatting">Text Formatting</a></li>
+          <li><a href="https://latex.vercel.app/#blockquotes">Blockquotes</a></li>
+          <li><a href="https://latex.vercel.app/#definition-lists">Definition Lists</a></li>
+          <li><a href="https://latex.vercel.app/#tables">Tables</a></li>
+          <li><a href="https://latex.vercel.app/#images">Images</a></li>
+        </ol>
+      </li>
+      <li>
+        <a href="https://latex.vercel.app/#miscellaneous">Miscellaneous</a>
+        <ol>
+          <li><a href="https://latex.vercel.app/#scroll-overflow">Scroll Overflow</a></li>
+          <li><a href="https://latex.vercel.app/#syntax-highlighting">Syntax Highlighting</a></li>
+        </ol>
+      </li>
+    </ol>
+  </nav>
+   <main>
+      <h1 class="title" >高校生のための線形代数</h1>
+      <button id="dark-mode-toggle">Toggle dark mode</button>
+
+      <h2>行列</h2>
+      <p>数をタテ, ヨコに並べたものを行列という. </p>
+
+      <div class="Theorem">...</div>
+
+      <hr>
+      <p class="center">
+         <a href="#">&#8593; トップに戻る</a>
+      </p>
+   </main>
+   <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'],],
+      },
+    }
+    const typeFaceToggle = document.getElementById('typeface-toggle')
+    const typeface = document.getElementById('typeface')
+    typeFaceToggle.addEventListener('click', () => {
+      document.body.classList.toggle('libertinus')
+      typeface.textContent = document.body.classList.contains('libertinus') ? 'Libertinus' : 'Latin Modern'
+    })
+
+    const darkModeToggle = document.getElementById('dark-mode-toggle')
+    darkModeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('latex-dark')
+    })
+  </script>
+  <script id="MathJax-script" async="" src="./LaTeX.css — Make your website look like a LaTeX document_files/tex-mml-chtml.js.download"></script>
+  <script async="" src="./LaTeX.css — Make your website look like a LaTeX document_files/prism.js.download"></script>
+
+</body></html>
